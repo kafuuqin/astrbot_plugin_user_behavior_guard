@@ -5,23 +5,22 @@ from .behavior_guard import check_behavior
 
 
 class UserBehaviorGuardPlugin(Star):
-    """Expose the behavior-checking test stub as an AstrBot LLM tool."""
+    """Expose user behavior compliance analysis as an AstrBot LLM tool."""
 
     def __init__(self, context: Context):
         super().__init__(context)
 
     @filter.llm_tool(name="check_user_behavior")
     async def check_user_behavior(self, event: AstrMessageEvent, behavior: str) -> str:
-        """Check a proposed behavior against the behavior constraints.
+        """分析用户行为是否合规，根据行为描述和相关上下文返回判断结果。
 
-        This test version always returns YES. It only tests tool invocation
-        and does not perform a real compliance assessment. YES cannot override
-        other constraints. The result contract is YES = allowed, NO = disallowed.
+        当需要判断用户的言论、请求或行为是否符合行为约束时调用。
+        返回 YES 表示合规，NO 表示不合规。
 
         Args:
-            behavior(string): Proposed behavior or reply and the context needed to assess it.
+            behavior(string): 需要分析的用户言论、请求或行为，以及判断所需的相关上下文。
 
         Returns:
-            The literal string YES in this test version.
+            YES 表示合规，NO 表示不合规。
         """
         return check_behavior(behavior)
