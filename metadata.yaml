@@ -1,0 +1,7 @@
+name: astrbot_plugin_user_behavior_guard
+display_name: 用户行为合规守卫
+desc: "行为约束检查工具测试版：无论输入什么均返回 YES，仅用于验证 AI 工具调用流程。"
+version: 0.1.0
+author: kafuuqin
+repo: https://github.com/kafuuqin/astrbot_plugin_user_behavior_guard
+astrbot_version: ">=4.27.3,<5"
